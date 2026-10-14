@@ -1,0 +1,649 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry, My Love ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #10051e;
+    color: white;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Animated background */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(
+        135deg,
+        #18051f,
+        #651344,
+        #240b46,
+        #10051e
+    );
+    background-size: 400% 400%;
+    animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating hearts */
+.floating-heart {
+    position: fixed;
+    bottom: -60px;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+    filter: drop-shadow(0 0 10px #ff4f9a);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.5);
+        opacity: 0;
+    }
+    20% { opacity: .9; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* Main hero */
+.hero {
+    min-height: 100vh;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.badge {
+    padding: 9px 20px;
+    border: 1px solid #ff8cbe;
+    border-radius: 30px;
+    color: #ffc1dc;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 28px;
+    box-shadow: 0 0 20px #ff338833;
+    animation: fadeIn 1.5s ease;
+}
+
+.heart-main {
+    font-size: 100px;
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s infinite;
+    filter: drop-shadow(0 0 25px #ff2678);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+h1 {
+    font-size: clamp(36px, 8vw, 75px);
+    line-height: 1.15;
+    background: linear-gradient(90deg, #fff, #ff92c8, #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 15px #ff4e9c44);
+    animation: fadeIn 2s ease;
+}
+
+.hero p {
+    max-width: 620px;
+    line-height: 1.9;
+    color: #f4d9e9;
+    font-size: 17px;
+    margin: 25px 0;
+}
+
+.glow-btn {
+    background: linear-gradient(90deg, #ff3f87, #ff78b2);
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 25px #ff3f8766;
+    transition: .3s;
+}
+
+.glow-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 40px #ff3f87;
+}
+
+.scroll {
+    margin-top: 55px;
+    color: #ffb2d4;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sections */
+section {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(28px, 5vw, 45px);
+    color: #ff9dc9;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    color: #d9bfd7;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.card {
+    max-width: 720px;
+    margin: auto;
+    padding: 35px;
+    border: 1px solid #ff8ab944;
+    background: rgba(255,255,255,.055);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0 15px 50px #0003;
+    line-height: 2;
+}
+
+.card p {
+    color: #f9e5f0;
+    font-size: 16px;
+}
+
+.emoji {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+/* Animated rose */
+.rose {
+    font-size: 90px;
+    display: inline-block;
+    animation: roseDance 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #ff3e80);
+}
+
+@keyframes roseDance {
+    0%, 100% { transform: rotate(-8deg) scale(1); }
+    50% { transform: rotate(8deg) scale(1.15); }
+}
+
+/* Letter */
+.letter-wrap {
+    max-width: 650px;
+    margin: 30px auto 0;
+    perspective: 1000px;
+}
+
+.letter {
+    display: none;
+    padding: 35px 25px;
+    color: #5a2040;
+    background: linear-gradient(135deg, #fff1f6, #ffd5e6);
+    border-radius: 8px 8px 18px 18px;
+    line-height: 2;
+    text-align: left;
+    box-shadow: 0 15px 60px #ff4f9a22;
+}
+
+.letter.open {
+    display: block;
+    animation: openLetter 1s ease;
+}
+
+@keyframes openLetter {
+    from {
+        opacity: 0;
+        transform: rotateX(-30deg) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0) translateY(0);
+    }
+}
+
+.letter h3 {
+    text-align: center;
+    font-size: 27px;
+    margin-bottom: 20px;
+    color: #c12669;
+}
+
+.letter p {
+    margin-bottom: 15px;
+}
+
+.signature {
+    text-align: right;
+    font-weight: bold;
+    color: #c12669;
+}
+
+/* Forgiveness buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.yes-btn, .time-btn {
+    padding: 15px 30px;
+    border-radius: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.yes-btn {
+    background: #ff4b91;
+    color: white;
+    border: none;
+    box-shadow: 0 0 20px #ff4b9155;
+}
+
+.time-btn {
+    background: transparent;
+    border: 1px solid #ff9bc6;
+    color: white;
+}
+
+.yes-btn:hover, .time-btn:hover {
+    transform: translateY(-4px);
+}
+
+#answer {
+    display: none;
+    margin: 35px auto 0;
+    max-width: 600px;
+    line-height: 2;
+    color: #ffc0dc;
+    font-size: 19px;
+    animation: fadeIn 1s ease;
+}
+
+/* Footer */
+footer {
+    padding: 45px 20px;
+    text-align: center;
+    background: #090311;
+    color: #d7a8c6;
+    line-height: 2;
+}
+
+footer strong {
+    color: #ff8abc;
+}
+
+/* Reveal animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .9s ease, transform .9s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .hero p { font-size: 15px; }
+    .card { padding: 25px 18px; }
+    .heart-main { font-size: 80px; }
+    section { padding: 65px 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- HERO -->
+<header class="hero">
+
+    <div class="badge">A MESSAGE FROM MY HEART 💌</div>
+
+    <div class="heart-main">❤️</div>
+
+    <h1>I'm Sorry,<br>My Love 🥺</h1>
+
+    <p>
+        If I could turn back time, I would make better choices.
+        I cannot change the past, but I can sincerely apologize
+        and try to become a better person.
+        <br>
+        <strong style="color:#ff9dc9">
+            You matter to me more than these words can explain. 💗
+        </strong>
+    </p>
+
+    <button class="glow-btn" onclick="scrollToSection('apology')">
+        💌 Read My Apology
+    </button>
+
+    <div class="scroll">SCROLL DOWN ↓</div>
+
+</header>
+
+<!-- APOLOGY -->
+<section id="apology" class="reveal">
+
+    <h2 class="section-title">🥺 From My Heart</h2>
+
+    <p class="section-subtitle">
+        Sometimes the most important words are the hardest to say.
+    </p>
+
+    <div class="card">
+        <div class="emoji">💔 → ❤️</div>
+
+        <p>
+            My love, I am truly sorry for hurting you.
+            I understand that my actions or words may have made
+            you feel sad, and I don't want to dismiss your feelings.
+            <br><br>
+
+            You deserve to be heard, respected, and treated with care.
+            I am not writing this to make excuses or pressure you
+            into forgiving me.
+            <br><br>
+
+            I want to learn from my mistake, listen to you,
+            and show through my actions that I can do better.
+            <br><br>
+
+            <strong style="color:#ff9dc9">
+                I'm sorry, sweetheart. You deserve a sincere apology,
+                not just beautiful words. 🌹
+            </strong>
+        </p>
+    </div>
+
+</section>
+
+<!-- ROSE -->
+<section class="reveal">
+
+    <div class="rose">🌹</div>
+
+    <h2 class="section-title">A Rose For You</h2>
+
+    <p class="section-subtitle">
+        A little flower, a thousand feelings, and one sincere apology.
+    </p>
+
+    <div class="card">
+        <p>
+            If this rose could speak, it would tell you how sorry I am.
+            I know trust and happiness are built through actions,
+            patience, and understanding.
+            <br><br>
+            I hope I can show you that I am willing to do my part.
+            You can take all the time you need. ❤️
+        </p>
+    </div>
+
+</section>
+
+<!-- LOVE LETTER -->
+<section class="reveal">
+
+    <h2 class="section-title">💌 A Secret Letter</h2>
+
+    <p class="section-subtitle">
+        There are some feelings I want you to read.
+    </p>
+
+    <button class="glow-btn" onclick="toggleLetter()">
+        💗 Open My Love Letter
+    </button>
+
+    <div class="letter-wrap">
+
+        <div class="letter" id="letter">
+
+            <h3>My Dearest Love ❤️</h3>
+
+            <p>
+                I don't know if a single letter can explain everything
+                I feel, but I want to try.
+            </p>
+
+            <p>
+                I am sorry for the moments when I made you feel hurt.
+                You have your own feelings, thoughts, and worries,
+                and I want to listen to them with an open heart.
+            </p>
+
+            <p>
+                I cannot promise that I will never make a mistake.
+                But I can promise to take responsibility for my actions,
+                learn from them, and make a genuine effort to do better.
+            </p>
+
+            <p>
+                I care about what we share, and I hope we can find
+                a way to understand each other. I respect your feelings
+                and your decision, whatever you need right now.
+            </p>
+
+            <p>
+                Thank you for taking the time to read my words.
+                I am truly sorry. ❤️
+            </p>
+
+            <p class="signature">
+                With love and a sincere apology,<br>
+                Your Boyfriend 💗
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FORGIVENESS -->
+<section class="reveal" id="forgiveness">
+
+    <h2 class="section-title">Can You Forgive Me? 🥹</h2>
+
+    <p class="section-subtitle">
+        I hope we can talk when you're ready.
+        Your feelings and your time matter to me.
+    </p>
+
+    <div class="buttons">
+
+        <button class="yes-btn" onclick="chooseAnswer('yes')">
+            ❤️ I Forgive You
+        </button>
+
+        <button class="time-btn" onclick="chooseAnswer('time')">
+            🫶 I Need Some Time
+        </button>
+
+    </div>
+
+    <div id="answer"></div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div style="font-size:35px">💖 ✨ 🌹</div>
+
+    <p>
+        Made with a sincere heart.
+        <br>
+        <strong>I'm sorry, my love. ❤️</strong>
+    </p>
+
+    <p style="font-size:12px; margin-top:15px">
+        Love is not about being perfect.
+        It's about listening, learning, and growing together.
+    </p>
+</footer>
+
+<script>
+
+// Smooth scrolling
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// Open and close letter
+function toggleLetter() {
+    const letter = document.getElementById("letter");
+
+    letter.classList.toggle("open");
+
+    if (letter.classList.contains("open")) {
+        setTimeout(() => {
+            letter.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }, 100);
+    }
+}
+
+// Answer interaction
+function chooseAnswer(choice) {
+
+    const answer = document.getElementById("answer");
+
+    answer.style.display = "block";
+
+    if (choice === "yes") {
+
+        answer.innerHTML =
+            "❤️ Thank you for hearing me out. " +
+            "Your kindness means a lot. I will keep trying " +
+            "to show through my actions that I can do better. 🌹";
+
+        createHearts(35);
+
+    } else {
+
+        answer.innerHTML =
+            "🫶 I understand. Take all the time you need. " +
+            "I respect your feelings, and I won't pressure you " +
+            "for an answer. Whenever you're ready to talk, " +
+            "I'll listen. 💗";
+
+        createHearts(10);
+    }
+
+    answer.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+// Floating hearts generator
+function createHearts(amount = 1) {
+
+    const symbols = ["❤️", "💗", "💕", "💖", "🌹", "✨"];
+
+    for (let i = 0; i < amount; i++) {
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "floating-heart";
+
+            heart.textContent =
+                symbols[Math.floor(Math.random() * symbols.length)];
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.fontSize =
+                (16 + Math.random() * 25) + "px";
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 5) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 9500);
+
+        }, i * 100);
+    }
+}
+
+// Continuous background hearts
+setInterval(() => {
+    createHearts(1);
+}, 550);
+
+// Reveal sections on scroll
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+        }
+
+    });
+
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll(".reveal").forEach(section => {
+    observer.observe(section);
+});
+
+</script>
+
+</body>
+</html>
+```
